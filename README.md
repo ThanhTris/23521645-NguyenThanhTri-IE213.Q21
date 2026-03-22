@@ -173,15 +173,27 @@ Testcase:
 
 **Bài 1 — Chuẩn bị môi trường**
 
+**1.1 — Tải và cài đặt Node.js (`nodejs.org`)**
+
 ![1.1 install Node.js](Lab02/images/step1_1_install_nodejs.png)
+
+**1.2 — Cài đặt công cụ soạn thảo và quản lý mã nguồn**
 
 ![1.2 install code editor](Lab02/images/step1_2_install_editor.png)
 
+**1.3 — Khởi tạo cây thư mục mã nguồn dự án**
+
 ![1.3 init project tree](Lab02/images/step1_3_init_project_tree.png)
+
+**1.4 — Khởi tạo dự án với lệnh `npm init`**
 
 ![1.4 npm init](Lab02/images/step1_4_npm_init.png)
 
+**1.5 — Cài đặt dependency (`mongodb`, `express`, `cors`, `dotenv`)**
+
 ![1.5 install dependencies](Lab02/images/step1_5_install_dependencies.png)
+
+**1.6 — Cài đặt `nodemon` để tự động restart khi mã nguồn thay đổi**
 
 ![1.6 install nodemon](Lab02/images/step1_6_install_nodemon.png)
 
@@ -225,11 +237,11 @@ Testcase:
 
 **2.8 — Kết quả cuối trên browser**
 
-![2.8 final browser result](Lab02/images/step2_8_final_browser_result.png)
+![final browser result](Lab02/images/final_browser_result.png)
 
 **Những nội dung đã hoàn thành & chưa hoàn thành**
-- Hoàn thành: Lab01 (bao gồm lab01.js và README.md).
-- Chưa hoàn thành: Lab02, Lab03, Lab04, Lab05, Lab06.
+- Hoàn thành: Lab01, Lab02.
+- Chưa hoàn thành: Lab03, Lab04, Lab05, Lab06.
 
 **Sử dụng công cụ AI**
 Các công cụ AI được sử dụng trong quá trình soạn thảo và hoàn thiện tài liệu này:
