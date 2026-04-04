@@ -325,7 +325,11 @@ Testcase:
 
 **4.4 — Thử nghiệm các API vừa tạo**
 
+**Kết quả API: Lấy tất cả thông tin của phim và các review liên quan theo Id phim**
+
 ![Lấy tất cả thông tin của phim và các review có liên quan dựa trên Id của phim](Lab03/images/lab03_b4_movie_by_id_result.png)
+
+**Kết quả API: Lấy tất cả các loại rating của phim trên dữ liệu**
 
 ![Lấy tất cả các loại rating của phim trên dữ liệu](Lab03/images/lab03_b4_ratings_result.png)
 
