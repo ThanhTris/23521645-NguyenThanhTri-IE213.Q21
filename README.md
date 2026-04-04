@@ -10,7 +10,7 @@
 
 **Cấu trúc thư mục**
 ```
-lab/                         # root của repository bài lab
+23521645-NguyenThanhTri-IE213.Q21/   # root của repository bài lab
 ├─ Lab01/                    # Lab01
 │  ├─ images/                # hình ảnh minh họa kết quả Lab01
 │  ├─ lab01.js               # lệnh mẫu để chạy trong mongosh
@@ -31,6 +31,16 @@ lab/                         # root của repository bài lab
 │  │        └─ moviesDAO.js
 │  └─ README.md              # hướng dẫn chi tiết Lab02
 ├─ Lab03/                    # Lab03
+│  ├─ images/                # hình ảnh minh họa kết quả Lab03
+│  ├─ movie-reviews/
+│  │  └─ backend/
+│  │     ├─ .env
+│  │     ├─ index.js
+│  │     ├─ server.js
+│  │     ├─ package.json
+│  │     ├─ api/
+│  │     └─ dao/
+│  └─ README.md              # hướng dẫn chi tiết Lab03
 ├─ Lab04/                    # Lab04
 ├─ Lab05/                    # Lab05
 ├─ Lab06/                    # Lab06
@@ -40,7 +50,7 @@ lab/                         # root của repository bài lab
 **Danh sách các lab & mô tả ngắn**
 - Lab01 — Thiết lập môi trường MongoDB Atlas + thao tác cơ bản với `employees` collection (CRUD, Index, Aggregation)
 - Lab02 — Thiết lập môi trường Node.js và xây dựng backend `movie-reviews` với API cơ bản theo mô hình Route -> Controller -> DAO.
-- Lab03 — (Chưa có)
+- Lab03 — Hoàn thiện backend `movie-reviews` với review CRUD, lấy phim theo ID kèm review và tra cứu danh sách rating.
 - Lab04 — (Chưa có)
 - Lab05 — (Chưa có)
 - Lab06 — (Chưa có)
@@ -239,9 +249,89 @@ Testcase:
 
 ![final browser result](Lab02/images/final_browser_result.png)
 
+**Lab03 — Hoàn thiện Back-end cho ứng dụng minh họa**
+
+**Mục tiêu bài thực hành**
+- Hoàn thiện backend cho ứng dụng Movie Reviews theo mô hình Route -> Controller -> DAO.
+- Bổ sung chức năng review CRUD, tra cứu phim theo ID kèm review và lấy danh sách rating.
+- Kiểm thử toàn bộ API bằng Insomnia.
+
+**Công cụ / môi trường sử dụng**
+- Node.js và JavaScript ES6.
+- Trình soạn thảo mã nguồn: Visual Studio Code.
+- Thư viện chính: `express`, `cors`, `dotenv`, `mongodb`, `nodemon`.
+- Cơ sở dữ liệu: MongoDB Atlas Cloud.
+- Công cụ kiểm thử API: Insomnia.
+
+**Cách chạy**
+- Bước 1: Vào thư mục `Lab03/movie-reviews/backend`.
+- Bước 2: Cài dependencies bằng `npm install`.
+- Bước 3: Cấu hình file `.env` với `MOVIEREVIEWS_DB_URI`, `MOVIEREVIEWS_NS`, `PORT`.
+- Bước 4: Chạy server bằng `npm run dev` hoặc `node index.js`.
+- Bước 5: Kiểm thử các endpoint sau bằng Insomnia:
+  - `GET /api/v1/movies`
+  - `GET /api/v1/movies/id/:id`
+  - `GET /api/v1/movies/ratings`
+  - `POST /api/v1/movies/review`
+  - `PUT /api/v1/movies/review`
+  - `DELETE /api/v1/movies/review`
+
+**Kết quả đầu ra**
+- Backend chạy thành công trên cổng cấu hình.
+- API trả được danh sách phim, phim theo ID kèm review, và danh sách rating.
+- Thêm, sửa, xóa review hoạt động qua endpoint `/api/v1/movies/review`.
+
+**Giải thích ngắn gọn phần chính đã thực hiện**
+- **Routing:** Dùng `express.Router()` để định tuyến request đến đúng controller.
+- **Controller:** Nhận dữ liệu từ `req.body` hoặc `req.params`, gọi DAO và trả JSON cho client.
+- **DAO:** Thao tác trực tiếp với MongoDB bằng `insertOne`, `updateOne`, `deleteOne`, `aggregate` và `distinct`.
+- **Tra cứu nâng cao:** Dùng `$lookup` để lấy phim kèm các review liên quan, và `distinct("rated")` để lấy danh sách rating.
+
+**Hình ảnh minh họa kết quả**
+
+**Bài 1 — Thiết lập định tuyến cho review**
+
+![Routing review](Lab03/images/lab03_b1_review_routing.png)
+
+**Bài 2 — Thiết lập Controller cho review**
+
+![Review controller](Lab03/images/lab03_b2_review_controller.png)
+
+**Bài 3 — Thiết lập DAO cho reviews**
+
+![Review DAO](Lab03/images/lab03_b3_review_dao.png)
+
+**3.6 — Thử nghiệm các API thêm / xóa / sửa dữ liệu**
+
+![Thêm dữ liệu](Lab03/images/lab03_b3_add_review.png)
+
+![Sửa dữ liệu](Lab03/images/lab03_b3_update_review.png)
+
+![Xóa dữ liệu](Lab03/images/lab03_b3_delete_review.png)
+
+**Bài 4 — Hoàn thành back-end cho ứng dụng minh họa**
+
+**4.1 — Thêm định tuyến lấy phim theo Id kèm review và lấy rating**
+
+![Bài 4 routing](Lab03/images/lab03_b4_route.png)
+
+**4.2 — Thêm controller `apiGetMovieById()` và `apiGetRatings()`**
+
+![Bài 4 controller](Lab03/images/lab03_b4_controller.png)
+
+**4.3 — Thêm DAO `getMovieById()` và `getRatings()`**
+
+![Bài 4 DAO](Lab03/images/lab03_b4_dao.png)
+
+**4.4 — Thử nghiệm các API vừa tạo**
+
+![Lấy tất cả thông tin của phim và các review có liên quan dựa trên Id của phim](Lab03/images/lab03_b4_movie_by_id_result.png)
+
+![Lấy tất cả các loại rating của phim trên dữ liệu](Lab03/images/lab03_b4_ratings_result.png)
+
 **Những nội dung đã hoàn thành & chưa hoàn thành**
-- Hoàn thành: Lab01, Lab02.
-- Chưa hoàn thành: Lab03, Lab04, Lab05, Lab06.
+- Hoàn thành: Lab01, Lab02, Lab03.
+- Chưa hoàn thành: Lab04, Lab05, Lab06.
 
 **Sử dụng công cụ AI**
 Các công cụ AI được sử dụng trong quá trình soạn thảo và hoàn thiện tài liệu này:
