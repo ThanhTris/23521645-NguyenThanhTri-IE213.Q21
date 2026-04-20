@@ -341,15 +341,53 @@ Testcase:
 
 ![Lấy tất cả các loại rating của phim trên dữ liệu](Lab03/images/lab03_b4_ratings_result.png)
 
+**Lab04 — Thiết lập Frontend cho ứng dụng minh họa**
+
+**Mục tiêu bài thực hành**
+- Thiết lập phần Frontend cho dự án ứng dụng minh họa "Movie Review" bằng ReactJS.
+- Xây dựng thanh điều hướng (Navigation Header bar) cho ứng dụng.
+- Thiết lập các định tuyến (routing) để kết nối các thành phần (components) trong ứng dụng.
+
+**Công cụ / môi trường sử dụng**
+- Thư viện chính: `ReactJS`.
+- Công cụ khởi tạo: `create-react-app`.
+- Thư viện hỗ trợ UI: `Bootstrap` và `React-Bootstrap`.
+- Thư viện điều hướng: `React Router Dom` (v6+).
+- Môi trường chạy: Node.js với trình quản lý gói `npm`.
+
+**Cách chạy**
+- Bước 1: Di chuyển vào thư mục `Lab04/movie-reviews/frontend`.
+- Bước 2: Cài đặt các gói phụ thuộc bằng lệnh `npm install`.
+- Bước 3: Khởi chạy ứng dụng bằng câu lệnh `npm start`.
+- Bước 4: Mở trình duyệt tại `http://localhost:3000` để xem kết quả.
+
+**Kết quả đầu ra**
+- Ứng dụng React chạy thành công tại `localhost:3000`.
+- Navbar hiển thị logo "Movie Reviews" cùng các menu chức năng.
+- Chuyển đổi qua lại giữa các trang thông qua hệ thống định tuyến (Routing).
+
+**Giải thích ngắn gọn phần chính đã thực hiện**
+- **Cấu trúc Component:** Xây dựng các file `movies-list.js`, `movie.js`, `add-review.js`, `login.js` trong thư mục `Components`.
+- **Giao diện chính:** Tích hợp `Navbar` từ `React-Bootstrap` vào `App.js`.
+- **Định tuyến:** Sử dụng `BrowserRouter`, `Routes` và `Route` để quản lý các đường dẫn trong ứng dụng.
+- **Quản lý trạng thái:** Dùng `useState` để giả lập trạng thái đăng nhập/đăng xuất của người dùng.
+
+**Hình ảnh minh họa kết quả**
+
 *Lab04 — Thiết lập frontend với Reactjs**
 
 **Bài 1: Thiết lập nơi làm việc với frontend của dự án.**
 1.1 Tạo template frontend với React trong thư mục Movie Review
+
 ![Tạo template React](Lab04/images/lab04_b1_init_react.png)
+
 1.2 Cài đặt một số package hỗ trợ xây dựng dự án:
 - Bootstrap: hỗ trợ xây dựng UI.
+
 ![Cài đặt Bootstrap](Lab04/images/lab04_b1_install_bootstrap.png)
+
 - React router dom: hỗ trợ định tuyến.
+
 ![Cài đặt React Router](Lab04/images/lab04_b1_install_router.png)
 
 **Bài 2: Xây dựng Navigation Header bar cho ứng dụng.**
@@ -359,13 +397,18 @@ Testcase:
 - `add-review`: hỗ trợ thêm review cho khách.
 - `login`: trang đăng nhập cho khách.
 Lưu ý: các component này sẽ được tạo trong thư mục `Components` (được tạo trong thư mục `frontend`), và lần lượt import vào tệp tin `App.js` để sử dụng về sau.
+
 ![Các component cơ bản](Lab04/images/lab04_b2_components.png)
+
 2.2 Lấy `Navbar` Component từ `React-Bootstrap` và đưa vào trong phần mã nguồn JSX của function `App()` trong tệp tin `App.js`.
+
 ![Mã nguồn Navbar](Lab04/images/lab04_b2_navbar_code.png)
+
 2.3 Điều chỉnh một số thông tin:
 - Tên logo: **Movie Reviews**.
 - Liên kết thứ nhất thay Home thành **Movies**.
 - Liên kết thứ hai thay Link thành trạng thái **Login/Logout** của người dùng.
+
 ![Kết quả hiển thị Navbar](Lab04/images/lab04_b2_navbar_result.png)
 
 **Bài 3: Thiết lập các định tuyến cho các component vừa tạo ở trên.**
@@ -375,10 +418,12 @@ Lưu ý: các component này sẽ được tạo trong thư mục `Components` (
 - `/movies/:id/review`: đến component `AddReview`.
 - `/movies/:id`: đến component `Movie`.
 - `/login`: đến component `Login`.
+
 ![Thiết lập định tuyến](Lab04/images/lab04_b3_routing.png)
 
 
 Kết quả cuối cùng
+
 ![Kết quả cuối cùng Lab04](Lab04/images/lab04_final_result.png)
 
 **Những nội dung đã hoàn thành & chưa hoàn thành**
