@@ -341,7 +341,7 @@ Testcase:
 
 ![Lấy tất cả các loại rating của phim trên dữ liệu](Lab03/images/lab03_b4_ratings_result.png)
 
-**Lab04 — Thiết lập Frontend cho ứng dụng minh họa**
+**Lab04 — Thiết lập Frontend với REACTJS**
 
 **Mục tiêu bài thực hành**
 - Thiết lập phần Frontend cho dự án ứng dụng minh họa "Movie Review" bằng ReactJS.
@@ -373,8 +373,6 @@ Testcase:
 - **Quản lý trạng thái:** Dùng `useState` để giả lập trạng thái đăng nhập/đăng xuất của người dùng.
 
 **Hình ảnh minh họa kết quả**
-
-*Lab04 — Thiết lập frontend với Reactjs**
 
 **Bài 1: Thiết lập nơi làm việc với frontend của dự án.**
 1.1 Tạo template frontend với React trong thư mục Movie Review
