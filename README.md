@@ -42,6 +42,14 @@
 │  │     └─ dao/
 │  └─ README.md              # hướng dẫn chi tiết Lab03
 ├─ Lab04/                    # Lab04
+│  ├─ images/                # hình ảnh minh họa kết quả Lab04
+│  └─ movie-reviews/
+│     ├─ frontend/           # ReactJS Frontend
+│     │  ├─ src/
+│     │  │  ├─ Components/    # Các thành phần giao diện
+│     │  │  └─ App.js         # Luồng chính và Router
+│     │  └─ package.json
+│     └─ README.md           # hướng dẫn chi tiết Lab04
 ├─ Lab05/                    # Lab05
 ├─ Lab06/                    # Lab06
 └─ README.md                 # README chính (mục lục + hướng dẫn chung)
@@ -51,7 +59,7 @@
 - Lab01 — Thiết lập môi trường MongoDB Atlas + thao tác cơ bản với `employees` collection (CRUD, Index, Aggregation)
 - Lab02 — Thiết lập môi trường Node.js và xây dựng backend `movie-reviews` với API cơ bản theo mô hình Route -> Controller -> DAO.
 - Lab03 — Hoàn thiện backend `movie-reviews` với review CRUD, lấy phim theo ID kèm review và tra cứu danh sách rating.
-- Lab04 — (Chưa có)
+- Lab04 — Thiết lập Frontend cho ứng dụng `movie-reviews` với ReactJS, xây dựng Navbar và hệ thống định tuyến (Routing).
 - Lab05 — (Chưa có)
 - Lab06 — (Chưa có)
 
@@ -333,9 +341,49 @@ Testcase:
 
 ![Lấy tất cả các loại rating của phim trên dữ liệu](Lab03/images/lab03_b4_ratings_result.png)
 
+*Lab04 — Thiết lập frontend với Reactjs**
+
+**Bài 1: Thiết lập nơi làm việc với frontend của dự án.**
+1.1 Tạo template frontend với React trong thư mục Movie Review
+![Tạo template React](Lab04/images/lab04_b1_init_react.png)
+1.2 Cài đặt một số package hỗ trợ xây dựng dự án:
+- Bootstrap: hỗ trợ xây dựng UI.
+![Cài đặt Bootstrap](Lab04/images/lab04_b1_install_bootstrap.png)
+- React router dom: hỗ trợ định tuyến.
+![Cài đặt React Router](Lab04/images/lab04_b1_install_router.png)
+
+**Bài 2: Xây dựng Navigation Header bar cho ứng dụng.**
+2.1 Navigation bar sẽ giúp người dùng định tuyến tới các nội dung của ứng dụng, do đó ta cần xây dựng các component như:
+- `movies-list`: hiển thị thông tin danh sách phim.
+- `movie`: hiển thị phim với các review.
+- `add-review`: hỗ trợ thêm review cho khách.
+- `login`: trang đăng nhập cho khách.
+Lưu ý: các component này sẽ được tạo trong thư mục `Components` (được tạo trong thư mục `frontend`), và lần lượt import vào tệp tin `App.js` để sử dụng về sau.
+![Các component cơ bản](Lab04/images/lab04_b2_components.png)
+2.2 Lấy `Navbar` Component từ `React-Bootstrap` và đưa vào trong phần mã nguồn JSX của function `App()` trong tệp tin `App.js`.
+![Mã nguồn Navbar](Lab04/images/lab04_b2_navbar_code.png)
+2.3 Điều chỉnh một số thông tin:
+- Tên logo: **Movie Reviews**.
+- Liên kết thứ nhất thay Home thành **Movies**.
+- Liên kết thứ hai thay Link thành trạng thái **Login/Logout** của người dùng.
+![Kết quả hiển thị Navbar](Lab04/images/lab04_b2_navbar_result.png)
+
+**Bài 3: Thiết lập các định tuyến cho các component vừa tạo ở trên.**
+3.1 Trong tệp tin `App.js` cần sử dụng thẻ `<Routes>` (import từ `react-router-dom` v6) để định tuyến cho 4 component tạo ở bài 2.1.
+3.2 Các định tuyến bao gồm:
+- `/`: đến component `MoviesList`.
+- `/movies/:id/review`: đến component `AddReview`.
+- `/movies/:id`: đến component `Movie`.
+- `/login`: đến component `Login`.
+![Thiết lập định tuyến](Lab04/images/lab04_b3_routing.png)
+
+
+Kết quả cuối cùng
+![Kết quả cuối cùng Lab04](Lab04/images/lab04_final_result.png)
+
 **Những nội dung đã hoàn thành & chưa hoàn thành**
-- Hoàn thành: Lab01, Lab02, Lab03.
-- Chưa hoàn thành: Lab04, Lab05, Lab06.
+- Hoàn thành: Lab01, Lab02, Lab03, Lab04.
+- Chưa hoàn thành: Lab05, Lab06.
 
 **Sử dụng công cụ AI**
 Các công cụ AI được sử dụng trong quá trình soạn thảo và hoàn thiện tài liệu này:
