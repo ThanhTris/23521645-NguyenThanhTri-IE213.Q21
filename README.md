@@ -424,6 +424,74 @@ Kết quả cuối cùng
 
 ![Kết quả cuối cùng Lab04](Lab04/images/lab04_final_result.png)
 
+**Lab05 — Xây dựng Frontend với REACTJS**
+
+**Mục tiêu bài thực hành**
+- Kết nối frontend ReactJS với backend Movie Reviews bằng `axios`.
+- Xây dựng lớp dịch vụ dùng chung để gọi API từ backend.
+- Hoàn thiện `MoviesList` Component để hiển thị, tìm kiếm và lọc phim theo title hoặc rating.
+
+**Công cụ / Môi trường sử dụng**
+- Thư viện chính: `ReactJS`.
+- Thư viện gọi API: `axios`.
+- Thư viện UI: `Bootstrap` và `React-Bootstrap`.
+- Thư viện điều hướng: `React Router Dom`.
+- Môi trường chạy: Node.js với trình quản lý gói `npm`.
+
+**Cách chạy**
+- **Bước 1:** Di chuyển vào thư mục `Lab05/movie-reviews/frontend`.
+- **Bước 2:** Cài đặt các gói cần thiết bằng lệnh `npm install`.
+- **Bước 3:** Chạy ứng dụng bằng lệnh `npm start`.
+- **Bước 4:** Mở trình duyệt tại `http://localhost:3000` để kiểm tra giao diện.
+
+**Kết quả đầu ra**
+- Ứng dụng frontend React chạy thành công tại `localhost:3000`.
+- `MovieDataService` cung cấp đầy đủ các hàm gọi backend: `getAll()`, `get(id)`, `createReview(data)`, `updateReview(data)`, `deleteReview(data)`, `getRatings()`.
+- `MoviesList` hiển thị danh sách phim bằng `Card` của React-Bootstrap, có form tìm theo title và rating.
+- `useState()` và `useEffect()` được dùng để quản lý trạng thái và tải dữ liệu sau khi giao diện kết xuất.
+
+**Giải thích ngắn gọn phần chính đã thực hiện**
+- **Kết nối backend:** Tạo lớp `MovieDataService` trong `Lab05/movie-reviews/frontend/src/services/movies.js` để gom các lời gọi API.
+- **Quản lý trạng thái:** Khai báo các state `movies`, `searchTitle`, `searchRating`, `ratings` bằng `useState()`.
+- **Nạp dữ liệu:** Xây dựng `retrieveMovies()` và `retrieveRatings()`, sau đó gọi chung trong `useEffect()` khi component khởi tạo.
+- **Tìm kiếm phim:** Hiện thực `findByTitle()` và `findByRating()` để lọc danh sách phim theo điều kiện người dùng nhập.
+- **Hiển thị giao diện:** Dùng `Card` của React-Bootstrap để trình bày từng movie rõ ràng và nhất quán.
+
+**Hình ảnh minh họa kết quả**
+
+**Bài 1: Kết nối tới Backend**
+
+1.1 Cài đặt `axios` cho dự án hiện tại.
+
+1.2 Tạo lớp dịch vụ `MovieDataService` trong `src/services/movies.js`.
+
+1.3 Tạo các lời gọi dịch vụ tới backend bằng `axios`.
+
+![MovieDataService và các hàm gọi API](Lab05/images/lab05_b1_service_api.png)
+
+**Bài 2: Xây dựng `MoviesList` Component**
+
+2.1 Tạo các biến trạng thái `movies`, `searchTitle`, `searchRating`, `ratings` bằng `useState()`.
+
+![Khai báo state cho MoviesList](Lab05/images/lab05_b2_state_variables.png)
+
+2.2 Tạo `retrieveMovies()` và `retrieveRatings()`, sau đó gọi chung bằng `useEffect()`.
+
+![Retrieve movies và ratings](Lab05/images/lab05_b2_retrieve_methods.png)
+
+2.3 Tạo 2 search form gồm tìm theo title và tìm theo rating.
+
+![Search form theo title và rating](Lab05/images/lab05_b2_search_forms.png)
+
+2.4 Hiển thị các movie bằng `Card` của React-Bootstrap.
+
+![Hiển thị movie bằng Card](Lab05/images/lab05_b2_movie_cards.png)
+
+2.5 Hiện thực `findByTitle()` và `findByRating()` để tìm phim theo title hoặc rating.
+
+![Tìm phim theo title và rating](Lab05/images/lab05_b2_search_methods.png)
+
+
 **Những nội dung đã hoàn thành & chưa hoàn thành**
 - Hoàn thành: Lab01, Lab02, Lab03, Lab04.
 - Chưa hoàn thành: Lab05, Lab06.
