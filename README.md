@@ -51,6 +51,15 @@
 │     │  └─ package.json
 │     └─ README.md           # hướng dẫn chi tiết Lab04
 ├─ Lab05/                    # Lab05
+│  ├─ images/                # hình ảnh minh họa kết quả Lab05
+│  └─ movie-reviews/
+│     ├─ backend/            # Backend API Movie Reviews
+│     │  ├─ package.json
+│     │  └─ ...
+│     └─ frontend/           # Frontend ReactJS Movie Reviews
+│        ├─ src/
+│        └─ package.json
+│  └─ README.md              # hướng dẫn chi tiết Lab05
 ├─ Lab06/                    # Lab06
 └─ README.md                 # README chính (mục lục + hướng dẫn chung)
 ```
@@ -60,7 +69,7 @@
 - Lab02 — Thiết lập môi trường Node.js và xây dựng backend `movie-reviews` với API cơ bản theo mô hình Route -> Controller -> DAO.
 - Lab03 — Hoàn thiện backend `movie-reviews` với review CRUD, lấy phim theo ID kèm review và tra cứu danh sách rating.
 - Lab04 — Thiết lập Frontend cho ứng dụng `movie-reviews` với ReactJS, xây dựng Navbar và hệ thống định tuyến (Routing).
-- Lab05 — (Chưa có)
+- Lab05 — Xây dựng frontend `movie-reviews` với ReactJS, kết nối backend bằng `axios`, hiển thị chi tiết phim và danh sách review.
 - Lab06 — (Chưa có)
 
 **Cách chạy Lab01**
@@ -91,109 +100,6 @@
 **Bài 1**
 
 ![Lab1 overview](Lab01/images/lab1_overview.png)
-
-**Bài 2 — Các bước thực hiện**
-
-**2.1 — Tạo database MSSV-IE213**
-
-![2.1 create DB](Lab01/images/step2_1_create_db.png)
-
-**2.2 — Thêm documents**
-
-![2.2 insert documents](Lab01/images/step2_2_insert_documents.png)
-
-**2.3 — Tạo index `unique` cho trường `id`**
-
-![2.3 create unique index](Lab01/images/step2_3_create_unique_index.png)
-
-**2.4 — Tìm document của `John Doe`**
-
-![2.4 find John Doe](Lab01/images/step2_4_find_john_doe.png)
-
-**2.5 — Tìm nhân viên có tuổi trong khoảng (30, 60)**
-
-![2.5 find age range](Lab01/images/step2_5_find_age_range.png)
-
-**2.6 — Thêm documents có trường `middle` name (hàm) và testcase**
-
-Chức năng:
-
-![2.6 insert with middle](Lab01/images/step2_6_insert_with_middle.png)
-
-Testcase:
-
-![2.6 testcase](Lab01/images/step2_6_testcase.png)
-
-**2.7 — Xóa trường `middle` name**
-
-![2.7 unset middle](Lab01/images/step2_7_unset_middle.png)
-
-**2.8 — Thêm trường `organization: "UIT"` cho tất cả nhân viên**
-
-![2.8 set organization UIT](Lab01/images/step2_8_set_organization_UIT.png)
-
-**2.9 — Cập nhật `organization` thành `"USSH"` cho id 5 và id 6**
-
-![2.9 set organization USSH](Lab01/images/step2_9_set_organization_USSH.png)
-
-**2.10 — Aggregation tính tổng và trung bình tuổi theo tổ chức**
-
-![2.10 aggregate age stats](Lab01/images/step2_10_aggregate_age_stats.png)
-
-**Kết quả cuối cùng**
-
-![final result 1](Lab01/images/final_result_1.png)
-
-![final result 2](Lab01/images/final_result_2.png)
-
-**Lab02 — Thiết lập Backend `movie-reviews`**
-
-**Mục tiêu bài thực hành**
-- Thiết lập hệ thống backend cho ứng dụng web bằng Node.js và ExpressJS.
-- Kết nối ứng dụng với MongoDB Atlas.
-- Xây dựng API cơ bản để truy xuất dữ liệu phim theo kiến trúc Route -> Controller -> DAO.
-
-**Công cụ / môi trường sử dụng**
-- Node.js.
-- Trình soạn thảo mã nguồn: Visual Studio Code.
-- Các dependency chính: `express`, `cors`, `dotenv`, `mongodb`.
-- Công cụ hỗ trợ: `nodemon`.
-- Cơ sở dữ liệu: MongoDB Atlas Cloud.
-
-**Cách chạy**
-- Bước 1: Vào thư mục `Lab02/movie-reviews/backend`.
-- Bước 2: Cài dependencies bằng `npm install`.
-- Bước 3: Cấu hình biến môi trường trong `.env` (URI kết nối, namespace DB, cổng chạy).
-- Bước 4: Chạy server bằng `npm run dev` (hoặc `node index.js`).
-- Bước 5: Mở trình duyệt tại `http://localhost:3000/api/v1/movies` để kiểm tra API.
-
-**Kết quả đầu ra**
-- Server backend chạy thành công trên cổng cấu hình (mặc định 3000).
-- Endpoint `api/v1/movies` trả về JSON.
-- Hoàn thiện các thành phần chính của backend:
-  - `server.js` để khởi tạo app và middleware.
-  - `index.js` để kết nối MongoDB và chạy server.
-  - `api/movies.route.js` để định tuyến.
-  - `dao/moviesDAO.js` để truy xuất dữ liệu collection `movies`.
-  - `api/movies.controller.js` để xử lý request/response.
-
-**Giải thích ngắn gọn phần chính đã thực hiện**
-- Khởi tạo server bằng Express, bật middleware `cors` và `express.json()`.
-- Tách cấu hình môi trường bằng `.env` để quản lý URI DB, namespace và PORT.
-- Kết nối MongoDB Atlas bằng MongoClient trong `index.js`.
-- Xây dựng lớp `MoviesDAO` với 2 phương thức chính:
-  - `injectDB()` để lấy tham chiếu collection `movies`.
-  - `getMovies()` để lấy danh sách phim theo phân trang/lọc và tổng số phim.
-- Tạo controller để gọi DAO và trả dữ liệu JSON cho client.
-- Gắn controller vào route `/api/v1/movies` để hoàn tất luồng API.
-
-**Hình ảnh minh họa kết quả**
-
-**Bài 1 — Chuẩn bị môi trường**
-
-**1.1 — Tải và cài đặt Node.js (`nodejs.org`)**
-
-![1.1 install Node.js](Lab02/images/step1_1_install_nodejs.png)
 
 **1.2 — Cài đặt công cụ soạn thảo và quản lý mã nguồn**
 
@@ -424,73 +330,108 @@ Kết quả cuối cùng
 
 ![Kết quả cuối cùng Lab04](Lab04/images/lab04_final_result.png)
 
-**Lab05 — Xây dựng Frontend với REACTJS**
+**Lab05 — Hoàn thiện Frontend và Kết nối Backend**
 
 **Mục tiêu bài thực hành**
-- Kết nối frontend ReactJS với backend Movie Reviews bằng `axios`.
-- Xây dựng lớp dịch vụ dùng chung để gọi API từ backend.
-- Hoàn thiện `MoviesList` Component để hiển thị, tìm kiếm và lọc phim theo title hoặc rating.
+- Xây dựng giao diện Frontend cho ứng dụng xem và đánh giá phim bằng ReactJS.
+- Kết nối frontend ReactJS với backend Movie Reviews bằng thư viện `axios`.
+- Xây dựng lớp dịch vụ dùng chung để gọi API từ backend một cách thống nhất.
+- Hoàn thiện các Component `MoviesList` và `Movie` để hiển thị danh sách phim, chi tiết phim và danh sách review tương ứng.
 
 **Công cụ / Môi trường sử dụng**
 - Thư viện chính: `ReactJS`.
 - Thư viện gọi API: `axios`.
 - Thư viện UI: `Bootstrap` và `React-Bootstrap`.
 - Thư viện điều hướng: `React Router Dom`.
+- Thư viện định dạng thời gian: `momentjs`.
 - Môi trường chạy: Node.js với trình quản lý gói `npm`.
 
 **Cách chạy**
 - **Bước 1:** Di chuyển vào thư mục `Lab05/movie-reviews/frontend`.
 - **Bước 2:** Cài đặt các gói cần thiết bằng lệnh `npm install`.
-- **Bước 3:** Chạy ứng dụng bằng lệnh `npm start`.
-- **Bước 4:** Mở trình duyệt tại `http://localhost:3000` để kiểm tra giao diện.
+- **Bước 3:** Đảm bảo Backend đang chạy (thường tại `http://localhost:5000`).
+- **Bước 4:** Khởi chạy ứng dụng bằng lệnh `npm start`.
+- **Bước 5:** Mở trình duyệt tại `http://localhost:3000` để kiểm tra giao diện.
 
 **Kết quả đầu ra**
-- Ứng dụng frontend React chạy thành công tại `localhost:3000`.
-- `MovieDataService` cung cấp đầy đủ các hàm gọi backend: `getAll()`, `get(id)`, `createReview(data)`, `updateReview(data)`, `deleteReview(data)`, `getRatings()`.
-- `MoviesList` hiển thị danh sách phim bằng `Card` của React-Bootstrap, có form tìm theo title và rating.
-- `useState()` và `useEffect()` được dùng để quản lý trạng thái và tải dữ liệu sau khi giao diện kết xuất.
+- Ứng dụng frontend React chạy thành công, kết nối mượt mà với API Backend.
+- `MovieDataService` cung cấp đầy đủ các hàm gọi API: `getAll()`, `get(id)`, `createReview()`, `updateReview()`, `deleteReview()`, `getRatings()`.
+- `MoviesList` hiển thị danh sách phim bằng `Card` của React-Bootstrap, hỗ trợ tìm kiếm theo tiêu đề và lọc theo rating.
+- Trang chi tiết phim hiển thị đầy đủ thông tin Plot và danh sách các Review liên quan.
+- Thời gian trong các review được định dạng chuyên nghiệp bằng `momentjs` (ví dụ: `18th April 2022`).
 
 **Giải thích ngắn gọn phần chính đã thực hiện**
-- **Kết nối backend:** Tạo lớp `MovieDataService` trong `Lab05/movie-reviews/frontend/src/services/movies.js` để gom các lời gọi API.
-- **Quản lý trạng thái:** Khai báo các state `movies`, `searchTitle`, `searchRating`, `ratings` bằng `useState()`.
-- **Nạp dữ liệu:** Xây dựng `retrieveMovies()` và `retrieveRatings()`, sau đó gọi chung trong `useEffect()` khi component khởi tạo.
-- **Tìm kiếm phim:** Hiện thực `findByTitle()` và `findByRating()` để lọc danh sách phim theo điều kiện người dùng nhập.
-- **Hiển thị giao diện:** Dùng `Card` của React-Bootstrap để trình bày từng movie rõ ràng và nhất quán.
+- **Kết nối backend:** Tạo lớp `MovieDataService` sử dụng `axios` để tập trung quản lý các lời gọi API từ frontend đến backend.
+- **Quản lý trạng thái:** Sử dụng Hook `useState()` để quản lý danh sách phim, thông tin tìm kiếm và dữ liệu chi tiết của từng bộ phim.
+- **Nạp dữ liệu động:** Sử dụng Hook `useEffect()` để tự động tải dữ liệu từ API khi component được khởi tạo hoặc khi có sự thay đổi trạng thái tìm kiếm.
+- **Xử lý hiển thị:** Dùng các component của `React-Bootstrap` như `Card`, `Button`, `Form` để xây dựng giao diện hiện đại và đáp ứng.
+- **Định dạng dữ liệu:** Sử dụng `momentjs` để chuyển đổi định dạng ngày tháng từ API sang định dạng dễ đọc cho người dùng.
 
 **Hình ảnh minh họa kết quả**
 
-**Bài 1: Kết nối tới Backend**
+**Bài 1: Kết nối tới Backend và Xây dựng MovieDataService**
 
-1.1 Cài đặt `axios` cho dự án hiện tại.
+1.1 Cài đặt thư viện `axios` và khởi tạo instance kết nối với Backend URL.
 
-1.2 Tạo lớp dịch vụ `MovieDataService` trong `src/services/movies.js`.
+![Khởi tạo axios instance](Lab05/images/lab05_b1_movie_data_service_instance.png)
 
-1.3 Tạo các lời gọi dịch vụ tới backend bằng `axios`.
+1.2 Xây dựng lớp dịch vụ `MovieDataService` trong `src/services/movies.js` để định nghĩa các phương thức gọi API.
 
-![MovieDataService và các hàm gọi API](Lab05/images/lab05_b1_service_api.png)
+![MovieDataService và các hàm gọi API](Lab05/images/lab05_b1_movie_data_service_api.png)
 
-**Bài 2: Xây dựng `MoviesList` Component**
+**Bài 2: Xây dựng MoviesList Component**
 
-2.1 Tạo các biến trạng thái `movies`, `searchTitle`, `searchRating`, `ratings` bằng `useState()`.
+2.1 Khai báo các biến trạng thái `movies`, `searchTitle`, `searchRating`, `ratings` bằng `useState()`.
 
 ![Khai báo state cho MoviesList](Lab05/images/lab05_b2_state_variables.png)
 
-2.2 Tạo `retrieveMovies()` và `retrieveRatings()`, sau đó gọi chung bằng `useEffect()`.
+2.2 Xây dựng các hàm `retrieveMovies()` và `retrieveRatings()` để nạp dữ liệu ban đầu thông qua `useEffect()`.
 
 ![Retrieve movies và ratings](Lab05/images/lab05_b2_retrieve_methods.png)
 
-2.3 Tạo 2 search form gồm tìm theo title và tìm theo rating.
+2.3 Thiết kế giao diện tìm kiếm gồm trường nhập Title và danh sách chọn Rating.
 
 ![Search form theo title và rating](Lab05/images/lab05_b2_search_forms.png)
 
-2.4 Hiển thị các movie bằng `Card` của React-Bootstrap.
+2.4 Hiển thị danh sách phim dưới dạng các `Card` với hình ảnh, tiêu đề và nút xem review.
 
 ![Hiển thị movie bằng Card](Lab05/images/lab05_b2_movie_cards.png)
 
-2.5 Hiện thực `findByTitle()` và `findByRating()` để tìm phim theo title hoặc rating.
+2.5 Hiện thực logic tìm kiếm phim theo Title và Rating.
 
 ![Tìm phim theo title và rating](Lab05/images/lab05_b2_search_methods.png)
 
+*Kết quả giao diện trang chủ danh sách phim:*
+
+![Giao diện MoviesList](Lab05/images/lab05_b2_home_result.png)
+
+**Bài 3: Xây dựng Movie Component (Trang chi tiết phim)**
+
+3.1 Thiết lập Component `Movie` với state để lưu trữ chi tiết một bộ phim và các review đi kèm.
+
+![Movie Component State và getMovie](Lab05/images/lab05_b3_movie_state_getmovie.png)
+
+3.2 Xây dựng cấu trúc JSX để hiển thị thông tin phim (Plot, Poster, Title).
+
+![Mã nguồn hiển thị thông tin phim](Lab05/images/lab05_b3_movie_jsx.png)
+
+*Kết quả giao diện trang chi tiết phim:*
+
+![Giao diện trang chi tiết phim](Lab05/images/lab05_b3_movie_detail_result.png)
+
+**Bài 4: Hiển thị danh sách Review và định dạng thời gian**
+
+4.1 Viết đoạn mã nguồn JSX để duyệt qua danh sách review và hiển thị từng phản hồi của người dùng.
+
+![Mã nguồn hiển thị danh sách review](Lab05/images/lab05_b4_review_list_code.png)
+
+4.2 Sử dụng thư viện `momentjs` để định dạng lại ngày tháng đánh giá (`Do MMMM YYYY`).
+
+![Định dạng ngày tháng với momentjs](Lab05/images/lab05_b4_review_date_format.png)
+
+*Kết quả hiển thị danh sách review:*
+
+![Kết quả danh sách review](Lab05/images/lab05_b4_reviews_result.png)
 
 **Những nội dung đã hoàn thành & chưa hoàn thành**
 - Hoàn thành: Lab01, Lab02, Lab03, Lab04.

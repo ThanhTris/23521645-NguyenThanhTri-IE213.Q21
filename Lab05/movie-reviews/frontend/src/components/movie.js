@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import MovieDataService from "../services/movies";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import moment from "moment";
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
 const Movie = (props) => {
+  const { id } = useParams();
   const [movie, setMovie] = useState({
     id: null,
     title: "",
@@ -19,12 +27,65 @@ const Movie = (props) => {
       });
   };
   useEffect(() => {
-    getMovie(props.match.params.id);
-  }, [props.match.params.id]);
+    if (id) {
+      getMovie(id);
+    }
+  }, [id]);
   return (
     <div>
-      <h1>{movie.title}</h1>
-      <p>Rated: {movie.rated}</p>
+      <Container>
+        <Row>
+          <Col>
+            <Image src={movie.poster + "/100px250"} fluid />
+          </Col>
+          <Col>
+            <Card>
+              <Card.Header as="h5">{movie.title}</Card.Header>
+              <Card.Body>
+                <Card.Text>{movie.plot}</Card.Text>
+                {props.user && (
+                  <Link to={'/movies/' + id + '/review'}>
+                    Add Review
+                  </Link>
+                )}
+              </Card.Body>
+            </Card>
+            <br />
+            <h2>Reviews</h2>
+            <br />
+            {movie.reviews && movie.reviews.length > 0 ? (
+              movie.reviews.map((review, index) => {
+                return (
+                  <div key={index} className="mb-3">
+                    <h5>
+                      {review.name + " reviewed on "}
+                      {moment(review.date).format("Do MMMM YYYY")}
+                    </h5>
+                    <p>{review.review}</p>
+                    {props.user && props.user.id === review.user_id && (
+                      <Row>
+                        <Col>
+                          <Link
+                            to={"/movies/" + id + "/review"}
+                            state={{ currentReview: review }}
+                          >
+                            Edit
+                          </Link>
+                        </Col>
+                        <Col>
+                          <Button variant="link">Delete</Button>
+                        </Col>
+                      </Row>
+                    )}
+                  </div>
+                );
+              })
+            ) : (
+              <p>No reviews yet for this movie.</p>
+            )}
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
