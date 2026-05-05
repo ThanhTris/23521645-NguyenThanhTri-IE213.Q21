@@ -54,8 +54,6 @@
 │  ├─ images/                # hình ảnh minh họa kết quả Lab05
 │  └─ movie-reviews/
 │     ├─ backend/            # Backend API Movie Reviews
-│     │  ├─ package.json
-│     │  └─ ...
 │     └─ frontend/           # Frontend ReactJS Movie Reviews
 │        ├─ src/
 │        └─ package.json
@@ -330,7 +328,7 @@ Kết quả cuối cùng
 
 ![Kết quả cuối cùng Lab04](Lab04/images/lab04_final_result.png)
 
-**Lab05 — Hoàn thiện Frontend và Kết nối Backend**
+**Lab05 — Xây dựng Frontend với REACTJS**
 
 **Mục tiêu bài thực hành**
 - Xây dựng giao diện Frontend cho ứng dụng xem và đánh giá phim bằng ReactJS.
@@ -373,9 +371,13 @@ Kết quả cuối cùng
 
 1.1 Cài đặt thư viện `axios` và khởi tạo instance kết nối với Backend URL.
 
-![Khởi tạo axios instance](Lab05/images/lab05_b1_movie_data_service_instance.png)
+![Cài đặt Axios](Lab05/images/lab05_b1_axios_config.png)
 
 1.2 Xây dựng lớp dịch vụ `MovieDataService` trong `src/services/movies.js` để định nghĩa các phương thức gọi API.
+
+![Khởi tạo axios instance](Lab05/images/lab05_b1_movie_data_service_instance.png)
+
+1.3 Tạo các lời gọi dịch vụ tới backend, sử dụng axios để gọi bao gồm: `getAll()`, `get(id)`, `createReview(data)`, `updateReview(data)`, `deleteReview(data)`, `getRatings()`.
 
 ![MovieDataService và các hàm gọi API](Lab05/images/lab05_b1_movie_data_service_api.png)
 
@@ -405,15 +407,15 @@ Kết quả cuối cùng
 
 ![Giao diện MoviesList](Lab05/images/lab05_b2_home_result.png)
 
-**Bài 3: Xây dựng Movie Component (Trang chi tiết phim)**
+**Bài 3: Hiển thị thông tin trang movie khi nhấn vào `View Reviews`**
 
-3.1 Thiết lập Component `Movie` với state để lưu trữ chi tiết một bộ phim và các review đi kèm.
+3.1 Thiết lập mã nguồn cho component Movie trong tệp tin ./components/movie.js gồm các biến trạng thái movie để lưu trữ thông tin chi tiết của movie như id, title, rated, reviews.
+
+![Movie Component State](Lab05/images/lab05_b3_movie_component_state.png)
+
+3.2 Xây dựng mã nguồn cho phương thức getMovie() trong component này để gọi phương thức get() trong MovieDataService.
 
 ![Movie Component State và getMovie](Lab05/images/lab05_b3_movie_state_getmovie.png)
-
-3.2 Xây dựng cấu trúc JSX để hiển thị thông tin phim (Plot, Poster, Title).
-
-![Mã nguồn hiển thị thông tin phim](Lab05/images/lab05_b3_movie_jsx.png)
 
 *Kết quả giao diện trang chi tiết phim:*
 
@@ -434,8 +436,8 @@ Kết quả cuối cùng
 ![Kết quả danh sách review](Lab05/images/lab05_b4_reviews_result.png)
 
 **Những nội dung đã hoàn thành & chưa hoàn thành**
-- Hoàn thành: Lab01, Lab02, Lab03, Lab04.
-- Chưa hoàn thành: Lab05, Lab06.
+- Hoàn thành: Lab01, Lab02, Lab03, Lab04, Lab05.
+- Chưa hoàn thành: Lab06.
 
 **Sử dụng công cụ AI**
 Các công cụ AI được sử dụng trong quá trình soạn thảo và hoàn thiện tài liệu này:
