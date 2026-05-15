@@ -435,6 +435,57 @@ Kết quả cuối cùng
 
 ![Kết quả danh sách review](Lab05/images/lab05_b4_reviews_result.png)
 
+**Lab06 — Xây dựng Frontend với REACTJS(tt)**
+
+**Mục tiêu bài thực hành**
+- Bổ sung chức năng đăng nhập để người dùng nhìn thấy Edit/Delete ở review của chính họ.
+- Thêm mới và sửa review ngay trên trang chi tiết movie.
+- Xoá review của chính user đang đăng nhập và cập nhật giao diện sau khi xoá.
+
+**Công cụ / môi trường sử dụng**
+- ReactJS.
+- React Router Dom.
+- React-Bootstrap.
+
+**Kết quả đầu ra**
+- Đăng nhập thành công sẽ quay về trang Home.
+- Review của user đăng nhập sẽ hiện Edit/Delete.
+- Có thể thêm, sửa, xoá review trực tiếp trên giao diện movie.
+
+**Bài 1: Thêm và Sửa Review**
+
+**1.1 Tạo login component**
+Yêu cầu khi thiết lập login component thì khi người dùng đăng nhập thành công, họ sẽ thấy được các chức năng như Edit và Delete review của chính họ.
+
+![Login component](Lab06/images/lab06-login-component.png)
+
+*Kết quả đăng nhập thành công*
+
+![Login result](Lab06/images/lab06-login-result.png)
+
+**1.2 Thêm review**
+
+![Add review component](Lab06/images/lab06-add-review-component.png)
+
+![Add review result](Lab06/images/lab06-add-review-result.png)
+
+**1.3 Sửa review**
+
+Để sửa review, component `AddReview` kiểm tra `state` được truyền vào từ `movie.js`. Nếu `state` chứa `currentReview` thì chuyển sang chế độ `editing` và khởi tạo `initialReviewState` bằng nội dung review hiện tại.
+
+Khi nhấn Submit ở chế độ editing, ứng dụng gọi `updateReview()` trong `MovieDataService`. Sau khi cập nhật thành công, người dùng sẽ thấy review đã được chỉnh sửa lại trên trang movie.
+
+![Edit review result](Lab06/images/lab06-edit-review-result.png)
+
+**Bài 2: Xoá review**
+
+Trong nút Delete, truyền `reviewId` và `index` từ `movie.reviews.map()` vào `deleteReview()` để xác định đúng review cần xoá.
+
+Trong `deleteReview()`, gọi `MovieDataService.deleteReview(reviewId, props.user.id)`. Sau khi backend xoá thành công, lấy mảng `reviews` hiện tại, dùng `splice()` theo `index` để xoá review khỏi state và cập nhật lại giao diện.
+
+Chạy lại ứng dụng, đăng nhập và chọn một movie có review do chính mình đăng để kiểm tra chức năng xoá.
+
+
 **Những nội dung đã hoàn thành & chưa hoàn thành**
 - Hoàn thành: Lab01, Lab02, Lab03, Lab04, Lab05.
 - Chưa hoàn thành: Lab06.
