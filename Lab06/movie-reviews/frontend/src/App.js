@@ -23,18 +23,12 @@ function App() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link>
-              <Link to={"/movies"}>Movies</Link>
-            </Nav.Link>
-            <Nav.Link>
-              {user ? (
-                <a onClick={logout} href="https://uit.edu.vn">
-                  Logout User
-                </a>
-              ) : (
-                <Link to={"/login"}>Login</Link>
-              )}
-            </Nav.Link>
+            <Nav.Link as={Link} to={"/movies"}>Movies</Nav.Link>
+            {user ? (
+              <Nav.Link onClick={logout}>Logout User</Nav.Link>
+            ) : (
+              <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

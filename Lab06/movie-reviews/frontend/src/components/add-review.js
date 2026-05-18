@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import MovieDataService from "../services/movies";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 const AddReview = (props) => {
   const { id } = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
   let editing = false;
   let initialReviewState = "";
 

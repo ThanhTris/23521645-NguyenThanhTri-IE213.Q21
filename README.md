@@ -485,7 +485,27 @@ Trong `deleteReview()`, gọi `MovieDataService.deleteReview(reviewId, props.use
 
 Chạy lại ứng dụng, đăng nhập và chọn một movie có review do chính mình đăng để kiểm tra chức năng xoá.
 
+**Bài 3: Lấy dữ liệu cho trang tiếp theo (Phân trang - Pagination)**
 
+**3.1 Phân trang mặc định - getAll()**
+
+Thêm 2 biến trạng thái `currentPage` và `entriesPerPage` trong `MoviesList` component. Đồng thời, cấu hình `useEffect()` lắng nghe sự thay đổi của `currentPage` để tự động gọi lại `retrieveMovies()`. Truyền tham số `currentPage` vào lời gọi API `MovieDataService.getAll(currentPage)`.
+
+Ở giao diện JSX, thêm nút "Get next results" để cho phép người dùng click và chuyển trang tiếp theo.
+
+![Cấu hình State và Effect phân trang](Lab06/images/lab06-pagination-getall-code.png)
+
+![Giao diện nút phân trang JSX](Lab06/images/lab06-pagination-button-code.png)
+
+**3.2 Phân trang khi Tìm kiếm - find()**
+
+Tạo biến trạng thái `currentSearchMode` để ghi nhớ chế độ tìm kiếm hiện tại (`"findByTitle"`, `"findByRating"` hoặc `""`). Sử dụng `useEffect()` để khi chế độ tìm kiếm thay đổi thì tự động đưa `currentPage` về `0`.
+
+Tạo phương thức điều hướng `retrieveNextPage()` để gọi hàm phân trang tương ứng với chế độ tìm kiếm hiện tại. Cập nhật phương thức `find()` để truyền thêm tham số `currentPage` vào cuộc gọi API `MovieDataService.find()`.
+
+![Cấu hình Search Mode và Điều hướng trang](Lab06/images/lab06-pagination-search-code1.png)
+
+![Cập nhật hàm find và các phương thức tìm kiếm](Lab06/images/lab06-pagination-search-code2.png)
 **Những nội dung đã hoàn thành & chưa hoàn thành**
 - Hoàn thành: Lab01, Lab02, Lab03, Lab04, Lab05.
 - Chưa hoàn thành: Lab06.
