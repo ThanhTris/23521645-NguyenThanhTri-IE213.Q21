@@ -59,6 +59,13 @@
 │        └─ package.json
 │  └─ README.md              # hướng dẫn chi tiết Lab05
 ├─ Lab06/                    # Lab06
+│  ├─ images/                # hình ảnh minh họa kết quả Lab06
+│  ├─ movie-reviews/
+│  │  ├─ backend/            # Backend API Movie Reviews
+│  │  └─ frontend/           # Frontend ReactJS Movie Reviews
+│  │     ├─ src/
+│  │     └─ package.json
+│  └─ README.md              # hướng dẫn chi tiết Lab06
 └─ README.md                 # README chính (mục lục + hướng dẫn chung)
 ```
 
@@ -68,7 +75,7 @@
 - Lab03 — Hoàn thiện backend `movie-reviews` với review CRUD, lấy phim theo ID kèm review và tra cứu danh sách rating.
 - Lab04 — Thiết lập Frontend cho ứng dụng `movie-reviews` với ReactJS, xây dựng Navbar và hệ thống định tuyến (Routing).
 - Lab05 — Xây dựng frontend `movie-reviews` với ReactJS, kết nối backend bằng `axios`, hiển thị chi tiết phim và danh sách review.
-- Lab06 — (Chưa có)
+- Lab06 — Xây dựng Frontend với ReactJS, thêm/sửa/xoá đánh giá (Review) và phân trang (Pagination) danh sách phim.
 
 **Cách chạy Lab01**
 
