@@ -1,35 +1,20 @@
 **Mục tiêu bài thực hành**
-- Bổ sung chức năng đăng nhập để người dùng nhìn thấy Edit/Delete ở review của chính họ.
-- Thêm mới và sửa review ngay trên trang chi tiết movie.
-- Xoá review của chính user đang đăng nhập và cập nhật giao diện sau khi xoá.
+- **Bài 1: Thêm và Sửa Review**
+  - Xây dựng chức năng đăng nhập để phân quyền người dùng (chỉ người dùng đã đăng nhập mới có quyền sửa/xóa review của chính họ).
+  - Xây dựng giao diện và logic để người dùng có thể thêm mới một đánh giá (review) cho phim.
+  - Xây dựng tính năng chỉnh sửa các đánh giá đã tồn tại.
+- **Bài 2: Xóa Review**
+  - Cho phép người dùng xóa đánh giá mà họ đã tự đăng.
+- **Bài 3: Lấy dữ liệu cho trang tiếp theo (Phân trang - Pagination)**
+  - Thực hiện chức năng phân trang cho danh sách phim mặc định.
+  - Đảm bảo việc tìm kiếm theo tên phim hoặc xếp hạng cũng hỗ trợ phân trang chính xác.
 
-**Cấu trúc thư mục**
-```
-Lab06/
-├─ images/                   # hình ảnh minh họa kết quả Lab06
-│  ├─ lab06-pagination-button-code.png
-│  ├─ lab06-pagination-getall-code.png
-│  ├─ lab06-pagination-search-code1.png
-│  ├─ lab06-pagination-search-code2.png
-│  ├─ lab06-pagination-result.png
-│  └─ lab06-search-result.png
-├─ movie-reviews/
-│  ├─ backend/               # Backend API Movie Reviews
-│  └─ frontend/              # Frontend ReactJS Movie Reviews
-│     ├─ src/
-│     │  ├─ components/
-│     │  │  ├─ add-review.js
-│     │  │  ├─ login.js
-│     │  │  └─ movies-list.js
-│     │  └─ App.js
-│     └─ package.json
-└─ README.md                 # hướng dẫn chi tiết Lab06
-```
-
-**Công cụ / môi trường sử dụng**
-- ReactJS.
-- React Router Dom.
-- React-Bootstrap.
+**Công cụ / Môi trường sử dụng**
+- **Thư viện chính:** `ReactJS`, `React Bootstrap` (Form, Button, Col, Row, Container, Card).
+- **Thư viện điều hướng:** `react-router-dom` (Link, Route).
+- **Dịch vụ kết nối API:** `MovieDataService` (các phương thức `getAll`, `find`, `createReview`, `updateReview`, `deleteReview`).
+- **React Hooks sử dụng:** `useState`, `useEffect`.
+- **Môi trường chạy:** Node.js với trình quản lý gói `npm`.
 
 **Cách chạy**
 - **Bước 1:** Đảm bảo Backend đang chạy ổn định tại địa chỉ `http://localhost:5000`.
@@ -45,9 +30,15 @@ Lab06/
   - Nhấn nút "Get next ... results" để tải thêm dữ liệu của trang tiếp theo.
 
 **Kết quả đầu ra**
-- Đăng nhập thành công sẽ quay về trang Home.
-- Review của user đăng nhập sẽ hiện Edit/Delete.
-- Có thể thêm, sửa, xoá review trực tiếp trên giao diện movie.
+- **Bài 1:**
+  - Giao diện form đăng nhập hiển thị chính xác.
+  - Hiển thị Form "Create Review" hoặc "Edit Review" tùy vào trạng thái người dùng đang thêm mới hay chỉnh sửa.
+  - Thông báo "Review submitted successfully" hiển thị sau khi gửi thành công kèm liên kết quay lại trang phim.
+- **Bài 2:**
+  - Review bị xóa khỏi giao diện ngay lập tức mà không cần tải lại trang nhờ vào việc cập nhật state của React.
+- **Bài 3:**
+  - Hiển thị dòng chữ: `"Showing page: [số trang]."`.
+  - Nút bấm chuyển trang hoạt động mượt mà dựa trên số lượng phim mỗi trang (`entriesPerPage`).
 
 **Giải thích ngắn gọn phần chính đã thực hiện**
 - **Bài 1: Thêm/Sửa Review**
