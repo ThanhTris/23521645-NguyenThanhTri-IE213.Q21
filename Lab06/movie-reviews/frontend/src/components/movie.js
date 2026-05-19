@@ -27,7 +27,7 @@ const Movie = (props) => {
       });
   };
   const deleteReview = (reviewId, index) => {
-    MovieDataService.deleteReview(reviewId, props.user.id)
+    MovieDataService.deleteReview({ review_id: reviewId, user_id: props.user.id })
       .then((response) => {
         setMovie((prevState) => {
           prevState.reviews.splice(index, 1);
