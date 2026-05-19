@@ -524,11 +524,13 @@ Trong `deleteReview()`, gọi `MovieDataService.deleteReview(reviewId, props.use
 
 Chạy lại ứng dụng, đăng nhập và chọn một movie có review do chính mình đăng để kiểm tra chức năng xoá.
 
-![Màn hình trước khi xóa review](Lab06/images/lab06-delete-review-before.png)
+![Mã nguồn sự kiện Delete JSX](Lab06/images/lab06-delete-review-code1.png)
 
-![Màn hình sau khi xóa review thành công](Lab06/images/lab06-delete-review-after.png)
+![Mã nguồn hàm deleteReview](Lab06/images/lab06-delete-review-code2.png)
 
+*Kết quả màn hình xóa review*
 
+![Kết quả màn hình xóa review](Lab06/images/lab06-delete-review-result.png)
 
 **Bài 3: Lấy dữ liệu cho trang tiếp theo (Phân trang - Pagination)**
 
