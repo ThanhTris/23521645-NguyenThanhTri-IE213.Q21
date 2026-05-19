@@ -1,33 +1,52 @@
 **Mục tiêu bài thực hành**
-- Xây dựng giao diện Frontend cho ứng dụng xem và đánh giá phim bằng ReactJS.
-- Kết nối giao diện với hệ thống Backend đã xây dựng trước đó thông qua các API.
-- Hiển thị danh sách phim, chi tiết phim và danh sách review tương ứng cho từng bộ phim.
+- **Bài 1: Thêm và Sửa Review**
+  - Xây dựng chức năng đăng nhập để phân quyền người dùng (chỉ người dùng đã đăng nhập mới có quyền sửa/xóa review của chính họ).
+  - Xây dựng giao diện và logic để người dùng có thể thêm mới một đánh giá (review) cho phim.
+  - Xây dựng tính năng chỉnh sửa các đánh giá đã tồn tại.
+- **Bài 2: Xóa Review**
+  - Cho phép người dùng xóa đánh giá mà họ đã tự đăng.
+- **Bài 3: Lấy dữ liệu cho trang tiếp theo (Phân trang - Pagination)**
+  - Thực hiện chức năng phân trang cho danh sách phim mặc định.
+  - Đảm bảo việc tìm kiếm theo tên phim hoặc xếp hạng cũng hỗ trợ phân trang chính xác.
 
 **Công cụ / Môi trường sử dụng**
-- Thư viện chính: `ReactJS`.
-- Thư viện gọi API: `axios`.
-- Thư viện điều hướng: `react-router-dom`.
-- Thư viện giao diện: `react-bootstrap` và `bootstrap`.
-- Thư viện định dạng thời gian: `momentjs`.
-- Công cụ hỗ trợ kiểm thử API: `Postman` hoặc `Insomnia`.
-- Môi trường chạy: Node.js với trình quản lý gói `npm`.
+- **Thư viện chính:** `ReactJS`, `React Bootstrap` (Form, Button, Col, Row, Container, Card).
+- **Thư viện điều hướng:** `react-router-dom` (Link, Route).
+- **Dịch vụ kết nối API:** `MovieDataService` (các phương thức `getAll`, `find`, `createReview`, `updateReview`, `deleteReview`).
+- **React Hooks sử dụng:** `useState`, `useEffect`.
+- **Môi trường chạy:** Node.js với trình quản lý gói `npm`.
 
 **Cách chạy**
-- **Bước 1:** Di chuyển vào thư mục frontend của Lab05.
-- **Bước 2:** Cài đặt các thư viện cần thiết bằng lệnh `npm i`.
-- **Bước 3:** Đảm bảo Backend đang chạy và có thể truy cập tại địa chỉ `http://localhost:5000/api/v1/movies`.
-- **Bước 4:** Khởi chạy ứng dụng frontend bằng lệnh `npm start`.
-- **Bước 5:** Mở trình duyệt tại địa chỉ `http://localhost:3000` để kiểm tra giao diện.
+- **Bước 1:** Đảm bảo Backend đang chạy ổn định tại địa chỉ `http://localhost:5000`.
+- **Bước 2:** Di chuyển vào thư mục frontend của Lab06 và khởi chạy ứng dụng bằng lệnh `npm start`.
+- **Bước 3: Thực hiện Bài 1 (Thêm/Sửa):**
+  - Người dùng truy cập trang Login (`/login`), nhập Username và ID để đăng nhập.
+  - Hệ thống tự động chuyển hướng (redirect) về trang Home sau khi đăng nhập thành công.
+  - Tại trang chi tiết phim, nhấn "Add Review" để thêm mới đánh giá hoặc nhấn "Edit" trên đánh giá của chính mình để chỉnh sửa.
+- **Bước 4: Thực hiện Bài 2 (Xóa):**
+  - Đăng nhập vào tài khoản, tìm đến đánh giá do chính mình viết và nhấn nút "Delete".
+- **Bước 5: Thực hiện Bài 3 (Phân trang):**
+  - Tại trang danh sách phim, cuộn xuống dưới cùng để xem số trang hiện tại.
+  - Nhấn nút "Get next ... results" để tải thêm dữ liệu của trang tiếp theo.
 
 **Kết quả đầu ra**
-- Giao diện web hiển thị danh sách phim dưới dạng thẻ (Card) kèm hình ảnh và mô tả ngắn.
-- Người dùng có thể tìm kiếm phim theo tiêu đề hoặc theo xếp hạng.
-- Khi chọn một phim, ứng dụng hiển thị trang chi tiết gồm nội dung plot và danh sách review tương ứng.
-- Thời gian review được định dạng rõ ràng bằng `momentjs`, ví dụ: `18th April 2022`.
+- **Bài 1:**
+  - Giao diện form đăng nhập hiển thị chính xác.
+  - Hiển thị Form "Create Review" hoặc "Edit Review" tùy vào trạng thái người dùng đang thêm mới hay chỉnh sửa.
+  - Thông báo "Review submitted successfully" hiển thị sau khi gửi thành công kèm liên kết quay lại trang phim.
+- **Bài 2:**
+  - Review bị xóa khỏi giao diện ngay lập tức mà không cần tải lại trang nhờ vào việc cập nhật state của React.
+- **Bài 3:**
+  - Hiển thị dòng chữ: `"Showing page: [số trang]."`.
+  - Nút bấm chuyển trang hoạt động mượt mà dựa trên số lượng phim mỗi trang (`entriesPerPage`).
 
 **Giải thích ngắn gọn phần chính đã thực hiện**
-- **Tạo lớp dịch vụ:** Sử dụng `MovieDataService` với `axios` để định nghĩa các hàm `getAll()`, `get()`, `find()`, `createReview()`, `updateReview()`, `deleteReview()` và `getRatings()`.
-- **Xây dựng MoviesList:** Dùng `useState()` và `useEffect()` để tải dữ liệu ban đầu, sau đó dùng `map()` để hiển thị danh sách phim và hỗ trợ tìm kiếm theo Title hoặc Rating.
-- **Xây dựng Movie Component:** Khi người dùng mở chi tiết phim, ứng dụng lấy `id` từ URL, gọi API lấy dữ liệu phim theo ID và hiển thị plot kèm danh sách review bên dưới.
-- **Hiển thị review:** Mỗi review được hiển thị với tên người dùng, thời gian đánh giá và nội dung review; thời gian được định dạng lại bằng `moment(review.date).format("Do MMMM YYYY")`.
-- **Kiểm tra dữ liệu review:** Có thể thêm review mới bằng giao diện hoặc kiểm tra thông qua `Postman`/`Insomnia` để đảm bảo API Backend trả dữ liệu đúng cho trang chi tiết phim.
+- **Bài 1: Thêm/Sửa Review**
+  - Sử dụng biến trạng thái `editing` (boolean) để xác định xem người dùng đang thêm mới hay sửa dựa trên props truyền vào (`currentReview`).
+  - Hàm `saveReview` sẽ kiểm tra biến `editing` để quyết định gọi `createReview` hoặc `updateReview` từ `MovieDataService`.
+- **Bài 2: Xoá Review**
+  - Khi nhấn "Delete", hàm `deleteReview` được gọi với `reviewId` và `index` của review đó trong mảng.
+  - Sau khi API backend phản hồi thành công, sử dụng hàm `splice(index, 1)` để loại bỏ review khỏi mảng `reviews` trong state `movie`, giao diện cập nhật ngay lập tức.
+- **Bài 3: Phân trang danh sách phim**
+  - Sử dụng `useEffect` lắng nghe sự thay đổi của biến `currentPage`. Mỗi khi `currentPage` thay đổi (tăng lên), hàm `retrieveMovies()` hoặc `retrieveNextPage()` sẽ được gọi lại để lấy dữ liệu trang mới từ server.
+  - Thêm biến `currentSearchMode` để quản lý trạng thái đang tìm kiếm theo tiêu chí nào (`"findByTitle"`, `"findByRating"` hoặc `""`), giúp tự động reset `currentPage` về 0 khi người dùng thay đổi cách tìm kiếm.
